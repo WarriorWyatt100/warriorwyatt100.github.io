@@ -36,6 +36,10 @@ function mooify() {
         }
     }
 
-    // Join sentences back with ". "
-    textArea.value = sentences.join(". ") + (text.endsWith(".") ? "." : "");
+    // Join sentences back with ". " but only add a period if it was there
+    let endingDot = text.endsWith(".");
+    textArea.value = sentences.filter(s => s !== "").join(". ");
+    if (endingDot) {
+        textArea.value += ".";
+    }
 }
